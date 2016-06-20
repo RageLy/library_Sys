@@ -52,7 +52,7 @@ namespace 图书馆管理系统
         {
             if(textBox1.Text=="")
             {
-                MessageBox.Show("请输入密码！", "提示", MessageBoxButtons.OK);
+                MessageBox.Show("请输入密码！", "提示", MessageBoxButtons.OK);   //简单的验证
             }
             else
             {
