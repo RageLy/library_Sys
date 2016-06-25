@@ -230,13 +230,13 @@ namespace 图书馆管理系统
 
                     int id = int.Parse(dr[0].ToString());
                     mark[5] = id;
-                    string sqlstring1 = "select 图书名称,类别,借阅时间,是否违约 from Library_Borrow where ID ='" + id + "'";
+                    string sqlstring1 = "select 图书名称,类别,借阅时间,借阅时长 from Library_Borrow where ID ='" + id + "'";
                     recode[2] = "Library_Borrow";
                     DataSet DS = new DataSet();
                     DS = date.GetDataSet(sqlstring1, recode[2]);
                     if (DS.Tables[0] == null || DS.Tables[0].Rows.Count == 0)
                     {
-                        MessageBox.Show("用户名为 " + textBox2.Text.ToString() + " 的账户没有借阅信息", "提示", MessageBoxButtons.OK);
+                        MessageBox.Show("用户名为 " + textBox1.Text.ToString() + " 的账户没有借阅信息", "提示", MessageBoxButtons.OK);
                     }
                     else
                     {
@@ -256,7 +256,10 @@ namespace 图书馆管理系统
         private void button6_Click(object sender, EventArgs e)
         {
             recode[6] = dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells["图书名称"].Value.ToString();
-            
+            recode[8] = dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells["借阅时间"].Value.ToString();
+            recode[9] = dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells["借阅时长"].Value.ToString();
+            book_return f1=new book_return(recode[6], mark[5].ToString(), recode[8], recode[9]);
+            f1.Show();
         }
         /// <summary>
         /// 防止窗口多次打开
