@@ -78,7 +78,7 @@ public string Random_Char(string m,int n)
             Random rand1 = new Random(seed);
             position = rand1.Next(26);
             m = m + chars[position].ToString();
-            seed = seed + 100;
+            seed = seed*2;
         }
         return m;
     }

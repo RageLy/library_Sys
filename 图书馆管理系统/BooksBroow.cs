@@ -19,14 +19,16 @@ namespace 图书馆管理系统
 
         public static int[] mark = new int[10];
         public static int[] number_ = new int[10];
-        public static string[] recode = new string[10];
+        public static string[] recode = new string[15];
 
         private void BooksBroow_Load(object sender, EventArgs e)
         {
             panel1.Visible = false;
             panel2.Visible = false;
             panel3.Visible = false;
-            button6.Text = "确认";
+            Main f = new Main();
+            recode[10] = f.CheckName();
+            //MessageBox.Show(recode[10]);
             dataGridView1.RowHeadersVisible = false;
         }
         /// <summary>
@@ -248,6 +250,13 @@ namespace 图书馆管理系统
             }
             
         }
+        public void Fresh()
+        {
+            DateBase date = new DateBase();
+            string sqlstring1 = "select 图书名称,类别,借阅时间,借阅时长 from Library_Borrow where ID ='" + mark[5] + "'";
+            DataSet DS = new DataSet();
+            DS = date.GetDataSet(sqlstring1, recode[2]);
+        }
         /// <summary>
         /// 确认还书按钮
         /// </summary>
@@ -258,7 +267,7 @@ namespace 图书馆管理系统
             recode[6] = dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells["图书名称"].Value.ToString();
             recode[8] = dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells["借阅时间"].Value.ToString();
             recode[9] = dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells["借阅时长"].Value.ToString();
-            book_return f1=new book_return(recode[6], mark[5].ToString(), recode[8], recode[9]);
+            book_return f1=new book_return(recode[6], mark[5].ToString(), recode[8], recode[9],recode[10]);
             f1.Show();
         }
         /// <summary>

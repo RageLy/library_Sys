@@ -50,6 +50,12 @@
     <Compile Include="BooksBroow.Designer.cs">
       <DependentUpon>BooksBroow.cs</DependentUpon>
     </Compile>
+    <Compile Include="Book_Alter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Book_Alter.Designer.cs">
+      <DependentUpon>Book_Alter.cs</DependentUpon>
+    </Compile>
     <Compile Include="book_borrow_confirm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,8 +85,17 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Safe_Mange.cs" />
+    <Compile Include="User_Mange.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User_Mange.Designer.cs">
+      <DependentUpon>User_Mange.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="BooksBroow.resx">
       <DependentUpon>BooksBroow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Book_Alter.resx">
+      <DependentUpon>Book_Alter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="book_borrow_confirm.resx">
       <DependentUpon>book_borrow_confirm.cs</DependentUpon>
@@ -104,6 +119,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="User_Mange.resx">
+      <DependentUpon>User_Mange.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

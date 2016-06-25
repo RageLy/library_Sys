@@ -19,10 +19,14 @@ namespace 图书馆管理系统
             mark2 = mark2_;
             name = name_;
         }
+        public Main()
+        {
+            InitializeComponent();
+        }
         public int rank=0;
         public int mark1=0;
         public int mark2=0;
-        public string name="";
+        public static string name="";
         private void Main_Load(object sender, EventArgs e)
         {
             initialize();
@@ -75,11 +79,29 @@ namespace 图书馆管理系统
                 label7.ForeColor = Color.Green;
             }
         }
-
+        /// <summary>
+        /// 返回当前的操作用户
+        /// </summary>
+        /// <returns></returns>
+        public string CheckName()
+        {
+            return name;
+        }
+        /// <summary>
+        /// 图书借阅按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
             BooksBroow.getBookBorrow().Show();
             BooksBroow.getBookBorrow().Activate();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Book_Alter f1 = new Book_Alter();
+            f1.Show();
         }
     }
 }

@@ -107,6 +107,7 @@
             this.button3.TabIndex = 6;
             this.button3.Text = "图书报损";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // label5
             // 
@@ -181,6 +182,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "book_return";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "book_return";
             this.Load += new System.EventHandler(this.book_return_Load);
             this.ResumeLayout(false);

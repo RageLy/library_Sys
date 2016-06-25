@@ -28,8 +28,8 @@ namespace 图书馆管理系统
             DataSet DS = new DataSet();
             DS = date.GetDataSet(sqlstring, value[2]);
             dataGridView1.DataSource = DS;
-            dataGridView1.DataMember = value[2];           
-
+            dataGridView1.DataMember = value[2];
+            dataGridView1.RowHeadersVisible = false;
             label2.Text = value[0];
 
 
