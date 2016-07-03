@@ -73,6 +73,7 @@
             this.button2.TabIndex = 1;
             this.button2.Text = "用户管理";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
@@ -92,6 +93,7 @@
             this.button4.TabIndex = 3;
             this.button4.Text = "数据查询";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // menuStrip1
             // 
@@ -151,6 +153,7 @@
             this.联系我们ToolStripMenuItem.Name = "联系我们ToolStripMenuItem";
             this.联系我们ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.联系我们ToolStripMenuItem.Text = "联系我们";
+            this.联系我们ToolStripMenuItem.Click += new System.EventHandler(this.联系我们ToolStripMenuItem_Click);
             // 
             // label1
             // 
@@ -262,7 +265,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Main";
+            this.Text = "图书管理系统";
             this.Load += new System.EventHandler(this.Main_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

@@ -67,6 +67,7 @@ namespace 图书馆管理系统
                     number_[5] = int.Parse(dr[14].ToString());
                     number_[6] = int.Parse(dr[15].ToString());
                     number_[7] = int.Parse(dr[16].ToString());
+                    recode[13] = dr[0].ToString();
                     if (state == 0)
                     {
                         MessageBox.Show("名为" + textBox1.Text.ToString() + "的用户已经被停用", "警告", MessageBoxButtons.OK);
@@ -103,7 +104,7 @@ namespace 图书馆管理系统
         private void button3_Click(object sender, EventArgs e)
         {
             DateBase date = new DateBase();
-            string sqlstring = "select 图书名称,分类号,类别,剩余可借数量 from Library_Book where 编号 ='" + textBox2.Text.ToString() + "'";
+            string sqlstring = "select 编号,图书名称,分类号,类别,剩余可借数量 from Library_Book where 编号 ='" + textBox2.Text.ToString() + "'";
             recode[2] = "Library_Book";
             DataSet DS = new DataSet();           
             DS = date.GetDataSet(sqlstring,recode[2]);
@@ -118,6 +119,7 @@ namespace 图书馆管理系统
                 recode[3] = DS.Tables[0].Rows[0]["类别"].ToString();
                 recode[1] = textBox2.Text.ToString();
                 recode[4] = DS.Tables[0].Rows[0]["图书名称"].ToString();
+                recode[14] = DS.Tables[0].Rows[0]["编号"].ToString();
                 dataGridView1.DataSource = DS;
                 dataGridView1.DataMember = recode[2];
                 panel2.Visible = true;
@@ -132,7 +134,16 @@ namespace 图书馆管理系统
         {
             mark[2] = number_[mark[1] * 2 - 2] - number_[mark[1] * 2 - 1];    //判断该类书是否可以借
             mark[3] = number_[mark[1] * 2 - 1];                               //读取该类已借的数量
-            if(mark[0]>0&&mark[2]>0) 
+
+            DateBase date = new DateBase();
+            string sqlstring = "select 单号 from Library_Borrow where 编号='" + recode[14].ToString() + "' and ID='" + recode[13] + "'";
+            int num = date.GetdataRow(sqlstring);
+
+            if(num>0)
+            {
+                MessageBox.Show("不能重复借阅同一本书！", "提示", MessageBoxButtons.OK);
+            }
+            else if(mark[0]>0&&mark[2]>0) 
             {
                 book_borrow_confirm f1 = new book_borrow_confirm();
                 f1.Show();
@@ -267,6 +278,7 @@ namespace 图书馆管理系统
             recode[6] = dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells["图书名称"].Value.ToString();
             recode[8] = dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells["借阅时间"].Value.ToString();
             recode[9] = dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells["借阅时长"].Value.ToString();
+
             book_return f1=new book_return(recode[6], mark[5].ToString(), recode[8], recode[9],recode[10]);
             f1.Show();
         }
@@ -286,6 +298,11 @@ namespace 图书馆管理系统
                 
                 return bookborrow1;
             }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

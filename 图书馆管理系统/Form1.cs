@@ -19,6 +19,7 @@ namespace 图书馆管理系统
         public int rank=0;
         public int mark1 = 0;
         public int mark2=0;
+        private int numbers = 0;
         public string name = "";
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -43,9 +44,15 @@ namespace 图书馆管理系统
         private void button1_Click(object sender, EventArgs e)
         {
             int count = 0;
-            int state = 0;
+            int state = 3;
+            numbers++;
        
-            if(textBox1.Text==""||textBox2.Text=="")
+            if(numbers>10)
+            {
+                MessageBox.Show("登陆次数太多，请稍后重试！");
+                this.Close();
+            }
+            else if(textBox1.Text==""||textBox2.Text=="")
             {
                 MessageBox.Show("用户名或者账户为空！", "警告", MessageBoxButtons.OK);
             }
@@ -64,26 +71,28 @@ namespace 图书馆管理系统
                         state = int.Parse(dr[6].ToString());
                         rank = count;
                         name = dr[1].ToString();
-                    }
-                    if (state == 0)
-                    {
-                        MessageBox.Show("账户已经被停用！请联系管理员", "警告", MessageBoxButtons.OK);
-                    }
-                    else
-                    {
-                        if (count >= 2)
+
+                        if (state == 0)
                         {
-                            this.DialogResult = DialogResult.OK;
-                        }
-                        else if (count == 1)
-                        {
-                            MessageBox.Show("权限不够！请联系管理员", "警告", MessageBoxButtons.OK);
+                            MessageBox.Show("账户已经被停用！请联系管理员", "警告", MessageBoxButtons.OK);
                         }
                         else
                         {
-                            MessageBox.Show("用户名或者账户错误！", "警告", MessageBoxButtons.OK);
+                            if (count >= 2)
+                            {
+                                this.DialogResult = DialogResult.OK;
+                            }
+                            else
+                            {
+                                MessageBox.Show("权限不够！请联系管理员", "警告", MessageBoxButtons.OK);
+                            }
                         }
                     }
+                    else
+                    {
+                        MessageBox.Show("用户名或者账户错误！", "警告", MessageBoxButtons.OK);
+                    }
+                    
                 }
                 catch
                 {

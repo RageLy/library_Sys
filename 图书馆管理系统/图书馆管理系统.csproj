@@ -44,6 +44,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="add_user.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="add_user.Designer.cs">
+      <DependentUpon>add_user.cs</DependentUpon>
+    </Compile>
     <Compile Include="BooksBroow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,11 +76,23 @@
     </Compile>
     <Compile Include="Creat_ID_Re.cs" />
     <Compile Include="DateBase.cs" />
+    <Compile Include="delete_user.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="delete_user.Designer.cs">
+      <DependentUpon>delete_user.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Information_Check.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Information_Check.Designer.cs">
+      <DependentUpon>Information_Check.cs</DependentUpon>
     </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
@@ -91,6 +109,9 @@
     <Compile Include="User_Mange.Designer.cs">
       <DependentUpon>User_Mange.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="add_user.resx">
+      <DependentUpon>add_user.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BooksBroow.resx">
       <DependentUpon>BooksBroow.cs</DependentUpon>
     </EmbeddedResource>
@@ -103,8 +124,14 @@
     <EmbeddedResource Include="book_return.resx">
       <DependentUpon>book_return.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="delete_user.resx">
+      <DependentUpon>delete_user.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Information_Check.resx">
+      <DependentUpon>Information_Check.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
@@ -143,6 +170,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Paper_Plane_128px_1066419_easyicon.net.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

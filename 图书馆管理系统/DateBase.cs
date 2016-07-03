@@ -59,6 +59,14 @@ namespace 图书馆管理系统
             SqlDataReader dr = mycom.ExecuteReader();
             return dr;
         }
+        public SqlDataAdapter GetDataAdapter(string sqlstring1,string sqlstring2)
+        {
+            open();
+            SqlCommand cmd = new SqlCommand(sqlstring1, connection);
+            SqlDataAdapter sda = new SqlDataAdapter();
+            sda.SelectCommand = cmd;
+            return sda;
+        }
         /// <summary>
         /// 输入sql命令，得到DataSet对象
         /// </summary>

@@ -17,7 +17,7 @@ namespace 图书馆管理系统
             InitializeComponent();
         }
         BooksBroow book = new BooksBroow();
-        string[] value=new string[15];
+        string[] value = new string[15];
 
         private void book_borrow_confirm_Load(object sender, EventArgs e)
         {
@@ -50,28 +50,29 @@ namespace 图书馆管理系统
         /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
-            if(textBox1.Text=="")
+            if (textBox1.Text == "")
             {
                 MessageBox.Show("请输入密码！", "提示", MessageBoxButtons.OK);   //简单的验证
             }
             else
             {
-                DateBase Date=new DateBase();
-                string SqlString = "select * from Library_Login where 用户名='"+value[0]+"' and 密码='"+textBox1.Text+"'";
+                DateBase Date = new DateBase();
+                string SqlString = "select * from Library_Login where 用户名='" + value[0] + "' and 密码='" + textBox1.Text + "'";
                 SqlDataReader dr;
                 dr = Date.GetDataReader(SqlString);
                 if (dr.Read())
                 {
-                    value[10]=dr[0].ToString();
+                    value[10] = dr[0].ToString();
                     Creat_ID_Re cr = new Creat_ID_Re();
                     value[9] = cr.GetFormCode(2, 5);            //2是指示借书，5代表字符串的长度
-                    string time=DateTime.Now.ToString();
-                    string sqlstring1 = "insert into Library_Borrow(单号,图书名称,ID,编号,分类号,类别,借阅时间,借阅时长,是否违约,操作员) values('" + value[9] + "','" + value[8] + "','" + value[10] + "','" + value[1] + "','" + int.Parse(value[4]) + "','" + value[6] + "','" + time + "','30','否','" + value[0] + "')";
-                    int j=int.Parse(value[3])-1;
+                    string time = DateTime.Now.ToString();
+                    int date = Get_date();
+                    string sqlstring1 = "insert into Library_Borrow(单号,图书名称,ID,编号,分类号,类别,借阅时间,借阅时长,是否违约,操作员) values('" + value[9] + "','" + value[8] + "','" + value[10] + "','" + value[1] + "','" + int.Parse(value[4]) + "','" + value[6] + "','" + time + "','"+date+"','否','" + value[0] + "')";
+                    int j = int.Parse(value[3]) - 1;
                     string sqlstring2 = "update Library_Book set 剩余可借数量= '" + j + "' where 编号 ='" + value[1] + "'";
                     value[11] = Judeg_class(value[4]);
                     j = int.Parse(value[7]) + 1;
-                    string sqlstring3 = "update Library_User_Inf set "+value[11]+"= '" + j + "' where ID ='" + value[10] + "'";
+                    string sqlstring3 = "update Library_User_Inf set " + value[11] + "= '" + j + "' where ID ='" + value[10] + "'";
                     int i = Date.ExecuteSQL(sqlstring1);
                     if (i == 1)
                     {
@@ -85,7 +86,7 @@ namespace 图书馆管理系统
                                 this.Close();
                             }
                             else
-                            {                       
+                            {
                                 MessageBox.Show("借书失败,3", "警告", MessageBoxButtons.OK);
                             }
                         }
@@ -98,7 +99,7 @@ namespace 图书馆管理系统
                     {
                         MessageBox.Show("借书失败,1", "警告", MessageBoxButtons.OK);
                     }
-                    
+
                 }
                 else
                 {
@@ -110,7 +111,7 @@ namespace 图书馆管理系统
         public string Judeg_class(string m)
         {
             string a = "";
-            switch(m)
+            switch (m)
             {
                 case "1":
                     a = "一类已借";
@@ -127,6 +128,27 @@ namespace 图书馆管理系统
             }
 
             return a;
+        }
+
+        public int Get_date()
+        {
+            int i = 0;
+            DateBase date = new DateBase();
+            string sqlstring = "select 默认时间 from Library_Paremeter";
+            try
+            {
+                SqlDataReader dr = date.GetDataReader(sqlstring);
+                if (dr.Read())
+                {
+                    i = int.Parse(dr[0].ToString());
+                }
+            }
+            catch (Exception msg)
+            {
+                MessageBox.Show(msg.ToString());
+            }
+
+            return i;
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -100,7 +101,38 @@ namespace 图书馆管理系统
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Book_Alter f1 = new Book_Alter();
+            if (rank > 2)
+            {
+                Book_Alter f1 = new Book_Alter(rank.ToString(), name);
+                f1.Show();
+            }
+            else
+            {
+                MessageBox.Show("当前用户没有权限进行用户管理！", "警告", MessageBoxButtons.OK);
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (rank > 2)
+            {
+                User_Mange f1 = new User_Mange();
+                f1.Show();
+            }
+            else
+            {
+                MessageBox.Show("当前用户没有权限进行用户管理！", "警告", MessageBoxButtons.OK);
+            }
+        }
+
+        private void 联系我们ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("http://www.rageangle.cn");
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Information_Check f1 = new Information_Check();
             f1.Show();
         }
     }

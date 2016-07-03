@@ -81,6 +81,16 @@ namespace 图书馆管理系统.Properties {
         }
         
         /// <summary>
+        ///   查找类似于 (Icon) 的 System.Drawing.Icon 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Icon Paper_Plane_128px_1066419_easyicon_net {
+            get {
+                object obj = ResourceManager.GetObject("Paper_Plane_128px_1066419_easyicon_net", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 123456789 的本地化字符串。
         /// </summary>
         internal static string String1 {
